@@ -1,0 +1,35 @@
+name: Release
+
+on: 
+    workflow_dispatch: 
+    
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+    release:
+        name: 🚀 Release
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            pull-requests: write
+            id-token: write
+        
+        steps:
+            - name: Setup Environment
+              uses: ./.github/actions/setup-env
+
+            - name: Build package
+              run: pnpm run build
+
+            - name: Create Release PR or Publish
+              uses: changesets/action@v1
+              with:
+                publish: pnpm changeset publish
+                version: pnpm changeset version
+                commit: "chore(changesets): bump package version"
+                title: "chore: bump package version"
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+                NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+                NPM_CONFIG_PROVENANCE: true

@@ -1,0 +1,76 @@
+{
+	"name": "@arkida39/effective-query-kit",
+	"type": "module",
+	"version": "1.0.0",
+	"description": "A typesafe key schema builder for @tanstack/query. Inspired by TkDodo's \"Effective Query Keys\" pattern.",
+	"author": "Daniil Kim <248118208+arkida39@users.noreply.github.com>",
+	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	},
+	"keywords": [
+		"tanstack",
+		"tanstack-query",
+		"query",
+		"query-keys"
+	],
+	"homepage": "https://github.com/arkida39/effective-query-kit#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/arkida39/effective-query-kit.git"
+	},
+	"bugs": {
+		"url": "https://github.com/arkida39/effective-query-kit/issues"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsdown",
+		"dev": "tsdown --watch",
+		"test": "vitest",
+		"test:run": "vitest run",
+		"test:ci": "vitest run --reporter=verbose",
+		"check": "biome check --write .",
+		"attwcheck": "attw --pack .",
+		"typecheck": "tsc --noEmit",
+		"changeset": "changeset",
+		"version": "changeset version",
+		"release": "pnpm run build && changeset publish",
+		"validate": "pnpm run check && pnpm run typecheck && pnpm run attwcheck && pnpm run test:run",
+		"prepublishOnly": "pnpm exec publint"
+	},
+	"peerDependencies": {
+		"@tanstack/query-core": ">=5.0.0"
+	},
+	"peerDependenciesMeta": {
+		"@tanstack/query-core": {
+			"optional": false
+		}
+	},
+	"devDependencies": {
+		"@arethetypeswrong/cli": "^0.18.2",
+		"@biomejs/biome": "^2.4.12",
+		"@changesets/changelog-github": "^0.6.0",
+		"@changesets/cli": "^2.31.0",
+		"@faker-js/faker": "^10.4.0",
+		"@tanstack/query-core": "^5.99.2",
+		"@types/node": "^25.5.0",
+		"@typescript/native-preview": "7.0.0-dev.20260328.1",
+		"prettier": "3.8.2",
+		"publint": "^0.3.18",
+		"tsdown": "^0.21.7",
+		"typescript": "^6.0.2",
+		"vitest": "^4.1.2"
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.cts",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		},
+		"./package.json": "./package.json"
+	}
+}

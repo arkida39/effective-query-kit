@@ -1,0 +1,27 @@
+name: CI
+
+on:
+    pull_request: 
+        branches: ["main"]
+    push: 
+        branches: ["main"]
+
+jobs:
+    qc:
+        name: 🧪 Check, Test, and Build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Setup Environment
+              uses: ./.github/actions/setup-env
+
+            - name: Lint and Format
+              run: pnpm biome ci .
+
+            - name: Typecheck
+              run: pnpm run typecheck
+
+            - name: Run tests
+              run: pnpm run test:ci
+
+            - name: Build package
+              run: pnpm run build

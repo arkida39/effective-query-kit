@@ -1,0 +1,26 @@
+name: "Setup Environment"
+description: "Checks out the repo, sets up Node and PNPM, and installs dependencies"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
+
+    - name: Install PNPM
+      uses: pnpm/action-setup@v6
+      with:
+        version: 10
+        cache: true
+
+    - name: Setup Node and Cache
+      uses: actions/setup-node@v6
+      with:
+        node-version-file: '.nvmrc'
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install --frozen-lockfile
