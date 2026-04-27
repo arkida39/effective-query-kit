@@ -4,11 +4,6 @@ description: "Checks out the repo, sets up Node and PNPM, and installs dependenc
 runs:
   using: "composite"
   steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v6
-      with:
-        fetch-depth: 0
-
     - name: Install PNPM
       uses: pnpm/action-setup@v6
       with:
