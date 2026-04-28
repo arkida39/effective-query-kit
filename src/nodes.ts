@@ -28,7 +28,7 @@ export interface GroupNode<
 	readonly entity: TEntity
 }
 
-export type AnyGroupNode = GroupNode<SafeAny, AnyParamNode>
+export type AnyGroupNode = GroupNode<SafeAny, SafeAny>
 
 export type Node = LeafNode | AnyParamNode | AnyGroupNode
 

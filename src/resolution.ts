@@ -214,7 +214,7 @@ export function buildChildren(
 			case GROUP: {
 				const groupKey = [...prefix, name]
 				const groupChildren = buildChildren(groupKey, def.children)
-				const entity = def.entity
+				const entity: AnyParamNode | null = def.entity
 
 				if (entity) {
 					const paramKeys = discoverParamKeys(entity.$build)
