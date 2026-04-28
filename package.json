@@ -1,7 +1,7 @@
 {
 	"name": "@arkida39/effective-query-kit",
 	"type": "module",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A typesafe key schema builder for @tanstack/query. Inspired by TkDodo's \"Effective Query Keys\" pattern.",
 	"author": "Daniil Kim <248118208+arkida39@users.noreply.github.com>",
 	"license": "MIT",
